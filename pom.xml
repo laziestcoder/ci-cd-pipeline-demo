@@ -9,8 +9,8 @@
     <version>1.0</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+<!--        <maven.compiler.source>17</maven.compiler.source>-->
+<!--        <maven.compiler.target>17</maven.compiler.target>-->
         <packaging>jar</packaging>
     </properties>
 
@@ -21,11 +21,55 @@
 
 <!--    </profiles>-->
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.towfiq.demo.DemoApplication</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-enforcer-plugin</artifactId>-->
+<!--&lt;!&ndash;                <version>3.0.0-M3</version>&ndash;&gt;-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>enforce-maven</id>-->
+<!--                        <goals>-->
+<!--                            <goal>enforce</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <rules>-->
+<!--                                <requireMavenVersion>-->
+<!--                                    <version>[3.5.4,)</version>-->
+<!--                                </requireMavenVersion>-->
+<!--                            </rules>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
